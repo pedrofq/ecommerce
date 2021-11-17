@@ -5,13 +5,14 @@
         <group>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/acoes.js</file>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/login.html</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/src/java/com/pedro/service/UsuarioService.java</file>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/login.jsp</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/cores.js</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/consulta.html</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/mostrarProdutos.js</file>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/cadastrarJS.js</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/cadastrar.jsp</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/style__css__cadastro.css</file>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/cadastro.html</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/index.html</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/confirmacaocadastro.js</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/src/java/com/pedro/servlet/Servlet.java</file>
         </group>
     </open-files>
 </project-private>

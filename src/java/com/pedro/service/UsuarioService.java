@@ -25,8 +25,7 @@ public class UsuarioService{
     
     public int registrar(String nome, String endereco, String email, String login, String senha){
         
-        UsuarioDTO user = new UsuarioDTO();
-        user = UsuarioDTO.RegistrarDTO(nome, endereco, email, login, senha, false);
+        UsuarioDTO user = new UsuarioDTO(nome, endereco, email, login, senha, false);
         
         ConnectDB con = new ConnectDB();
         Connection connection = con.conectar();
@@ -44,11 +43,14 @@ public class UsuarioService{
  
         pst.execute();
         
+        
         }catch(Exception e){
              System.out.println(e);
              return 0;
         }
         return 1;
+        
+      
         /*
         while(rs.next()) {
             System.out.println(rs.getWarnings());
@@ -59,6 +61,29 @@ public class UsuarioService{
         */
     }
     
-    
+    public int buscarUsuario(String login){
+   
+        ConnectDB con = new ConnectDB();
+        Connection connection = con.conectar();
+        
+        String queryStr =  "SELECT * FROM usuario " + "WHERE login = ?";
+        
+        
+        try{
+            PreparedStatement pstmt = connection.prepareStatement(queryStr);
+            pstmt.setString(1, login);
+
+            ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            System.out.println(rs.getString("login"));
+            return 1;
+        }
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+        return 0;
+    }
+
    
 }

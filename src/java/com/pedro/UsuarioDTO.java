@@ -16,22 +16,16 @@ public class UsuarioDTO {
     
     public UsuarioDTO(){
     }
-    
-    public static UsuarioDTO RegistrarDTO(String nome, String endereco, String email, String login, String senha, Boolean administrador) {
-        
-        UsuarioDTO userdto = new UsuarioDTO();
-        
-        userdto.nome = nome;
-        userdto.endereco = endereco;
-        userdto.email = email;
-        userdto.login = login;
-        userdto.senha = senha;
-        userdto.administrador = administrador;
-        
-        return userdto;
-    }    
-   
 
+    public UsuarioDTO(String nome, String endereco, String email, String login, String senha, Boolean administrador) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+        this.login = login;
+        this.senha = senha;
+        this.administrador = administrador;
+    }
+    
     public String getNome() {
         return nome;
     }

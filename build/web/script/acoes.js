@@ -3,16 +3,18 @@ const senha2 = document.getElementById("senha2");
 const form = document.getElementById("form");
 const erroSenha = document.getElementById("erroSenha");
 
+
+
 form.addEventListener('submit', (e) => {
     let mensagens = [];
     
     if(senha.value !== senha2.value){
+        mensagens = [];
         mensagens.push("As senhas não coincidem");
-    }  
-    if(mensagens.length > 0){
         e.preventDefault();
-        erroSenha.innerText = mensagens;     
-    }
+        erroSenha.innerText = mensagens; 
+    }  
+    
 });
 
 function mascara_cpf(i){
