@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
         name = "cadastro",
         urlPatterns = {"/cadastro"}
     )
-public class Servlet extends HttpServlet {
+public class ServletCadastroUsuario extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         String nome = request.getParameter("nome");

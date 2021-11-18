@@ -12,7 +12,7 @@ public class UsuarioDTO {
     private String senha;
     private Boolean administrador;
     private String adm;
-    private List<Venda> Vendas = new ArrayList<>(); 
+    private List<Venda> vendas = new ArrayList<>(); 
     
     public UsuarioDTO(){
     }
@@ -55,7 +55,7 @@ public class UsuarioDTO {
     }
 
     public List<Venda> getVendas() {
-        return Vendas;
+        return vendas;
     }
     
 }

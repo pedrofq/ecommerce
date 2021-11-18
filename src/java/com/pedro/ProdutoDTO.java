@@ -1,9 +1,10 @@
-package com.pedro.domain;
+package com.pedro;
 
+import com.pedro.domain.Categoria;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Produto {
+public class ProdutoDTO {
     private Integer id;
     private String descricao;
     private String foto;
@@ -12,10 +13,10 @@ public class Produto {
     
     private List<Categoria> categorias = new ArrayList<>();
     
-    public Produto(){
+    public ProdutoDTO(){
     }
-    
-    public Produto(Integer id, String descricao, String foto, Double preco, Integer quantidade) {
+
+    public ProdutoDTO(Integer id, String descricao, String foto, Double preco, Integer quantidade) {
         this.id = id;
         this.descricao = descricao;
         this.foto = foto;
@@ -46,7 +47,7 @@ public class Produto {
     public List<Categoria> getCategorias() {
         return categorias;
     }
-    
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -69,5 +70,6 @@ public class Produto {
 
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
-    }
+    }  
 }
+
