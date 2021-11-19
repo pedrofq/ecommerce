@@ -7,13 +7,21 @@ const erroSenha = document.getElementById("erroSenha");
 
 form.addEventListener('submit', (e) => {
     let mensagens = [];
+    let senhaValue = senha.value;
     
     if(senha.value !== senha2.value){
         mensagens = [];
         mensagens.push("As senhas não coincidem");
         e.preventDefault();
         erroSenha.innerText = mensagens; 
-    }  
+    } 
+
+    if(senhaValue.length < 6){
+        mensagens = [];
+        mensagens.push("Digite uma senha maior que 6 dígitos");
+        e.preventDefault();
+        erroSenha.innerText = mensagens; 
+    }
     
 });
 
