@@ -1,10 +1,13 @@
 package com.pedro;
 
 import com.pedro.domain.Categoria;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutoDTO {
+public class ProdutoDTO implements Serializable{
+    private static final long serialVersionUID = 1L;
+    
     private Integer id;
     private String descricao;
     private String foto;
@@ -71,5 +74,6 @@ public class ProdutoDTO {
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
     }  
+
 }
 

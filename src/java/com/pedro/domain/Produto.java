@@ -1,9 +1,11 @@
 package com.pedro.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Produto {
+public class Produto implements Serializable {
+    
     private Integer id;
     private String descricao;
     private String foto;
@@ -69,5 +71,10 @@ public class Produto {
 
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + "id=" + id + ", descricao=" + descricao + ", foto: " + foto + ", preco=" + preco + ", quantidade=" + quantidade + '}';
     }
 }

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<!--
-Banco de dados
-controle clientes
+<%
+    Usuario user = (Usuario) session.getAttribute("usuario");
+    if(user == null){
+        request.setAttribute("mensagem", "Permiss„o negada");
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        rd.forward(request, response);
+    }else{
 
-Tabela
-clientes
--->
+%>
+
+<%@page import="com.pedro.domain.Usuario"%>
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -15,12 +19,11 @@ clientes
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <script src='./script/cores.js'></script>
-
     </head>
     
-    <header id="header-id">  
-        <h1>Projeto e-commerce</h1>  
-        <ul><li><a href="login.html" target="iFramePrincipal">Fa√ßa login  ou cadastre-se!</a></li></ul>
+    <header id="header-id"> 
+        <h1>Projeto e-commerce</h1>
+        <ul><li>Bem vindo, <%=user.getNome()%></li></ul>
     </header>
     
     <body id="container">
@@ -47,7 +50,9 @@ clientes
         
           
         </div>
-       
         
     </body>
+    
 </html>
+
+<%}%>

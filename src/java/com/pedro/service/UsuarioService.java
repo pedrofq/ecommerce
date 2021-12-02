@@ -1,31 +1,17 @@
 package com.pedro.service;
 
 import com.pedro.ConnectDB;
-import com.pedro.UsuarioDTO;
 import com.pedro.domain.Usuario;
-import com.pedro.domain.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 
 public class UsuarioService{
     
-    private Integer id;
-    private String nome;
-    private String endereco;
-    private String email;
-    private String login;
-    private String senha;
-    private Boolean administrador;
-    private List<Venda> Vendas = new ArrayList<>();
-    
-    
-    public int registrar(String nome, String endereco, String email, String login, String senha){
-        
-        UsuarioDTO user = new UsuarioDTO(nome, endereco, email, login, senha, false);
+    public static int registrar(String nome, String endereco, String email, String login, String senha){   
+        Usuario user = new Usuario(null, nome, endereco, email, login, senha, false);
         
         ConnectDB con = new ConnectDB();
         Connection connection = con.conectar();
@@ -49,40 +35,39 @@ public class UsuarioService{
              return 0;
         }
         return 1;
-        
-      
-        /*
-        while(rs.next()) {
-            System.out.println(rs.getWarnings());
-        }
-        } catch (Exception e){
-            System.out.println(e);
-        }
-        */
     }
     
-    public int buscarUsuario(String login){
+    public static Usuario buscarUsuarioLogin(String login){
    
         ConnectDB con = new ConnectDB();
         Connection connection = con.conectar();
         
-        String queryStr =  "SELECT * FROM usuario " + "WHERE login = ?";
+        Usuario user = null;
         
+        String queryStr =  "SELECT * FROM usuario " + "WHERE login = ?";
         
         try{
             PreparedStatement pstmt = connection.prepareStatement(queryStr);
             pstmt.setString(1, login);
 
             ResultSet rs = pstmt.executeQuery();
+     
         while (rs.next()) {
-            System.out.println(rs.getString("login"));
-            return 1;
+            user = new Usuario();
+            user.setId(rs.getInt("id_user"));
+            user.setEmail(rs.getString("email"));
+            user.setEndereco(rs.getString("endereco"));
+            user.setNome(rs.getString("nome"));
+            user.setLogin(rs.getString("login"));
+            user.setAdministrador(false);
+            user.setSenha(rs.getString("senha")); 
         }
+        rs.close();
         }catch(Exception e){
             System.out.println(e);
-            return 0;
         }
-        return 0;
+        
+        return user;
     }
 
    

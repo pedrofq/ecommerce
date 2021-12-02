@@ -3,46 +3,45 @@ package com.pedro.servlet;
 import com.pedro.domain.Usuario;
 import static com.pedro.service.UsuarioService.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(
-        name = "cadastro",
-        urlPatterns = {"/cadastro"}
+        name = "login",
+        urlPatterns = {"/login"}
     )
-public class ServletCadastroUsuario extends HttpServlet {
+public class ServletLoginUsuario extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         //ENTRADA DE DADOS
-        String nome = request.getParameter("nome");
-        String endereco = request.getParameter("endereco");
-        String email = request.getParameter("email");
-        String login = (request.getParameter("login")).toLowerCase();
+        String login = request.getParameter("login");
         String senha = request.getParameter("senha");
               
         Usuario user = buscarUsuarioLogin(login);
-        String mensagem = null;
+        String mensagem = "Login ou senha inválida";
         String pagFoward = null;
         
         //Usuário não existente, logo é feito o cadastro
-        if(user == null){
-            Integer i = registrar(nome, endereco, email, login, senha);
-            mensagem = "Cadastro executado com sucesso!";
-            pagFoward = "transferenciaCadastro.jsp";
-        }
         
-        //Usuário já existe.
-        else{
-            mensagem = "Esse nome de login já existe";
-            pagFoward = "cadastroJSP.jsp";
-        }
-        
-        
+            if(user == null){
+            mensagem = "Login ou senha inválida";
+            pagFoward = "loginJSP.jsp";
+            }
+            else{
+                if(user.getSenha().equals(senha)){
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuario", user);
+                    pagFoward = "transferenciaLogin.jsp";
+                }else{
+                    mensagem = "Login ou senha inválida";
+                    pagFoward = "loginJSP.jsp";
+                }
+            } 
         request.setAttribute("mensagem", mensagem);
         RequestDispatcher rd = request.getRequestDispatcher(pagFoward);
         rd.forward(request, response);

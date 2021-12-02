@@ -8,3 +8,4 @@ function modificarCorFundo(color){
         document.getElementById("header-id").style.color = '#FFFFFF';
     }
 }
+

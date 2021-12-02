@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/CSS/style__css__cadastro.css</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/login.html</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/acoesRegistrarUsuario.js</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/mostrarProdutos.js</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/src/java/com/pedro/servlet/ServletCadastroProduto.java</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/src/java/com/pedro/service/UsuarioService.java</file>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/consulta.html</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/CSS/style.css</file>
-            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/cadastro.html</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/script/acoesRegistrarUsuario.js</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/src/java/com/pedro/ProdutoDTO.java</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/src/java/com/pedro/UsuarioDTO.java</file>
             <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/index.html</file>
+            <file>file:/C:/Users/pedro/Desktop/JavaWEB/site_teste_1/web/cadastro.html</file>
         </group>
     </open-files>
 </project-private>
