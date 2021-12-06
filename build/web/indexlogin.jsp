@@ -23,7 +23,10 @@
     
     <header id="header-id"> 
         <h1>Projeto e-commerce</h1>
-        <ul><li>Bem vindo, <%=user.getNome()%></li></ul>
+        <ul>
+            <li>Bem vindo, <%=user.getNome()%>.</li>
+            <a href="minhaconta.jsp">Minha Conta</a><br><a href="carinho.jsp">Meu Carrinho</a><br><a href="logout">Sair</a>
+        </ul>
     </header>
     
     <body id="container">
@@ -33,7 +36,7 @@
             <span class="menu-vertical">         
                 <a href="#" target="iFramePrincipal"> Meu carrinho </a>
                 <a href="consulta.html" target="iFramePrincipal"> Categorias </a>
-                <a href="consulta.html" target="iFramePrincipal"> Todos os produtos </a>
+                <a href="produtos" target="iFramePrincipal"> Todos os produtos </a>
                 <a href="PaginaTestes.jsp"> Alterar dados </a>
                 <br><br><br>
                 <label for="claro"> Modo Claro</label>

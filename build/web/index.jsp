@@ -36,7 +36,7 @@
             <span class="menu-vertical">         
                 <a href="#" target="iFramePrincipal"> Meu carrinho </a>
                 <a href="consulta.html" target="iFramePrincipal"> Categorias </a>
-                <a href="consulta.html" target="iFramePrincipal"> Todos os produtos </a>
+                <a href="produtos" target="iFramePrincipal"> Todos os produtos </a>
                 <a href="PaginaTestes.jsp"> Alterar dados </a>
                 <br><br><br>
                 <label for="claro"> Modo Claro</label>

@@ -3,7 +3,6 @@ package com.pedro.servlet;
 import com.pedro.domain.Usuario;
 import static com.pedro.service.UsuarioService.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,14 +28,14 @@ public class ServletCadastroUsuario extends HttpServlet {
         String mensagem = null;
         String pagFoward = null;
         
-        //Usuário não existente, logo é feito o cadastro
+        //Usuário não existente, logo é feito o cadastro.
         if(user == null){
             Integer i = registrar(nome, endereco, email, login, senha);
             mensagem = "Cadastro executado com sucesso!";
             pagFoward = "transferenciaCadastro.jsp";
         }
         
-        //Usuário já existe.
+        //Usuário já existe, volta para a tela de cadastro.
         else{
             mensagem = "Esse nome de login já existe";
             pagFoward = "cadastroJSP.jsp";

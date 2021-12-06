@@ -16,12 +16,14 @@ import javax.servlet.http.HttpSession;
         urlPatterns = {"/login"}
     )
 public class ServletLoginUsuario extends HttpServlet {
+    @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         //ENTRADA DE DADOS
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-              
+        
+        //Busca do usuário no banco de dados
         Usuario user = buscarUsuarioLogin(login);
         String mensagem = "Login ou senha inválida";
         String pagFoward = null;
@@ -34,7 +36,7 @@ public class ServletLoginUsuario extends HttpServlet {
             }
             else{
                 if(user.getSenha().equals(senha)){
-                    HttpSession session = request.getSession();
+                    HttpSession session = request.getSession(true);
                     session.setAttribute("usuario", user);
                     pagFoward = "transferenciaLogin.jsp";
                 }else{

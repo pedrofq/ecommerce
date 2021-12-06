@@ -59,7 +59,11 @@ public class UsuarioService{
             user.setEndereco(rs.getString("endereco"));
             user.setNome(rs.getString("nome"));
             user.setLogin(rs.getString("login"));
-            user.setAdministrador(false);
+            if(rs.getString("administrador") == "false"){
+                user.setAdministrador(false);
+            }else{
+                user.setAdministrador(true);
+            }      
             user.setSenha(rs.getString("senha")); 
         }
         rs.close();
