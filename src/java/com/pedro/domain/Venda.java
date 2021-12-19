@@ -1,9 +1,10 @@
 
 package com.pedro.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Venda {
+public class Venda implements Serializable {
     private Integer id;
     private Timestamp data_hora;
 

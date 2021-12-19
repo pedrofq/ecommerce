@@ -185,5 +185,38 @@ public class ProdutoService {
         return listaProdutos;
     }
     
+    public List<Produto> buscarTodosProdutosEmEstoque() throws SQLException{
+        
+        List<Produto> listaProdutos = new ArrayList<>();
+        
+        ConnectDB con = new ConnectDB();
+        Connection connection = con.conectar();
+        
+        String queryStr = "SELECT * FROM public.produto WHERE quantidade > 0";
+        try{
+            PreparedStatement pst = connection.prepareStatement(queryStr);         
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                Produto prod = new Produto();
+                
+                prod.setId(rs.getInt("id_produto"));
+                prod.setDescricao(rs.getString("descricao"));
+                prod.setFoto(rs.getString("foto"));
+                prod.setPreco(rs.getDouble("preco"));
+                prod.setQuantidade(rs.getInt("quantidade"));
+                
+                listaProdutos.add(prod);
+            }
+            pst.close();
+            
+            }catch(Exception e){
+            }
+        
+            connection.close();
+        
+        return listaProdutos;
+    }
+    
   
 }

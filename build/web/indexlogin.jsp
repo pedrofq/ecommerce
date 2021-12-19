@@ -18,6 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+        <script>
         <script src='./script/cores.js'></script>
     </head>
     
@@ -25,7 +26,7 @@
         <h1>Projeto e-commerce</h1>
         <ul>
             <li>Bem vindo, <%=user.getNome()%>.</li>
-            <a href="minhaconta.jsp">Minha Conta</a><br><a href="carinho.jsp">Meu Carrinho</a><br><a href="logout">Sair</a>
+            <a href="minhaconta.jsp" target="iFramePrincipal">Minha Conta</a><br><a href="carinho.jsp">Meu Carrinho</a><br><a href="logout">Sair</a>
         </ul>
     </header>
     
@@ -55,7 +56,7 @@
         </div>
         
     </body>
-    
+    <script>window.open("produtos","iFramePrincipal");</script>
 </html>
 
 <%}%>

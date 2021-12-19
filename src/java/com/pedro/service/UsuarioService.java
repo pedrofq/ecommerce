@@ -73,6 +73,50 @@ public class UsuarioService{
         
         return user;
     }
+    
+    public static void alterarUsuario(String nome, String endereco, String email, Usuario user){
+        
+        String nomeInserir;
+        String enderecoInserir;
+        String emailInserir;
+        
+        ConnectDB con = new ConnectDB();
+        Connection connection = con.conectar();
+        
+        if(nome == null || "".equals(nome)){
+            nomeInserir = user.getNome();
+        }else{
+            nomeInserir = nome;
+        }
+        if(endereco == null || "".equals(endereco)){
+            enderecoInserir = user.getEndereco();
+        }else{
+            enderecoInserir = endereco;
+        }
+        if(email == null || "".equals(email)){
+            emailInserir = user.getEmail();
+        }else{
+            emailInserir = email;
+        }
+        
+        String login = user.getLogin();
+        
+        String queryStr = "UPDATE public.usuario SET nome=?, endereco=?, email=? WHERE login=?";
+        
+        try{
+            PreparedStatement pst = connection.prepareStatement(queryStr);
+            pst.setString(1, nomeInserir);
+            pst.setString(2, enderecoInserir);
+            pst.setString(3, emailInserir);
+            pst.setString(4, login);
+            
+            pst.execute();
+            pst.close();
+            connection.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
    
 }

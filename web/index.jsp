@@ -55,5 +55,5 @@
         </div>
         
     </body>
-    
+    <script>window.open("produtos","iFramePrincipal");</script>
 </html>
