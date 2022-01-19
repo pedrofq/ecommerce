@@ -145,6 +145,7 @@ public class ProdutoService {
             pst.close();
             
             }catch(Exception e){
+                prod = null;
             }
         
             connection.close();
@@ -216,7 +217,37 @@ public class ProdutoService {
             connection.close();
         
         return listaProdutos;
-    }
+    } 
+  
+    
+    public void deletarProdutoPorId(Integer idProduto) throws SQLException{
+       
+        
+        ConnectDB con = new ConnectDB();
+        Connection connection = con.conectar();
+        
+        String queryStr = "DELETE * FROM public.produto WHERE id_produto = ?" ;
+        
+        try{
+            PreparedStatement pst = connection.prepareStatement(queryStr);
+            pst.setInt(1, idProduto);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+            }
+            pst.close();
+            
+            }catch(Exception e){
+            
+            }
+        
+            connection.close();  
+    } 
+    
+}
+
+
     
   
-}
+
+

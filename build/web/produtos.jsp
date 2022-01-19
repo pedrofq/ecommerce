@@ -51,7 +51,7 @@
 
     <body class="container2">
 
-        <h1>LISTA DE PRODUTOS</h1>
+        
         <form method="post" action="ordenarProdutos.jsp">
             <p>Ordenar</p>
             <select name="ordenarProdutos">

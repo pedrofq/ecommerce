@@ -1,14 +1,7 @@
 <%@page import="com.pedro.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    Usuario user = (Usuario) session.getAttribute("usuario");
-    if(user == null){ 
-        request.setAttribute("mensagem", "Faça login para ver detalhes da conta");
-        RequestDispatcher rd = request.getRequestDispatcher("loginJSP.jsp");
-        rd.forward(request, response);
-    }
-%>
+<jsp:useBean id="usuario" class="com.pedro.domain.Usuario" scope="session" />
 
 <!DOCTYPE html>
 <html>
@@ -21,9 +14,9 @@
         
         <div>
             <h1>Meus dados</h1>
-            <div>Nome: <%= user.getNome()%></div>
-            <div>Endereço: <%= user.getEndereco()%></div>
-            <div>E-mail: <%= user.getEmail()%></div>
+            <div>Nome: <jsp:getProperty name="usuario" property="nome"/></div>
+            <div>Endereço: <jsp:getProperty name="usuario" property="endereco"/></div>
+            <div>E-mail: <jsp:getProperty name="usuario" property="email"/></div>
             
             <h1>Ações</h1>
             <a href="alterardados.jsp"><p>Alterar dados da conta</p></a>

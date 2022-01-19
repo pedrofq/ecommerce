@@ -19,14 +19,21 @@
         <link rel="stylesheet" type="text/css" href="CSS/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <script>
-        <script src='./script/cores.js'></script>
+        <script src='/script/cores.js'></script>
     </head>
     
     <header id="header-id"> 
         <h1>Projeto e-commerce</h1>
         <ul>
             <li>Bem vindo, <%=user.getNome()%>.</li>
-            <a href="minhaconta.jsp" target="iFramePrincipal">Minha Conta</a><br><a href="carinho.jsp">Meu Carrinho</a><br><a href="logout">Sair</a>
+            <%System.out.println(user.getAdministrador());
+            if(user.getAdministrador()==true){%>
+            <a href="paginaAdministrador.jsp" target="iFramePrincipal">Configurações de Administrador</a>
+            <%}%> 
+            <br>
+            <a href="minhaconta.jsp" target="iFramePrincipal">Minha Conta</a>
+            <br>
+            <a href="logout">Sair</a>
         </ul>
     </header>
     
