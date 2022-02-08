@@ -28,12 +28,12 @@
 
                 for (let produto of arr) {
                     if (produto[4] > 0) {
-                        dataHtml += `<td><img style='width: 85px;' src="`+produto[2]+`"><td><a href="/carrinho/?id=`+produto[0]+`">`+produto[1]+` - </a>`+produto[3]+`, Adicionar ao carrinho</td></td>`     
+                        dataHtml += `<td><img style='width: 85px;' src="`+produto[2]+`"><td><a href="/site_teste_1/carrinho?produtoId=`+produto[0]+`">`+produto[1]+` - </a>`+produto[3]+`, Adicionar ao carrinho</td></td>`     
                         if (contador % 3 == 0) {
                             dataHtml += `</tr><tr>`
                         }
                     } else {
-                        dataHtml += `<td><img style='width: 85px;' src="`+produto[2]+`"><td><a href="/carrinho/?id=`+produto[0]+`">`+produto[1]+` - </a>`+produto[3]+`, FORA DE ESTOQUE</td></td>`     
+                        dataHtml += `<td><img style='width: 85px;' src="`+produto[2]+`"><td><a href="/site_teste_1/carrinho?produtoId=`+produto[0]+`">`+produto[1]+` - </a>`+produto[3]+`, FORA DE ESTOQUE</td></td>`     
                         if (contador % 3 == 0) {
                             dataHtml += `</tr><tr>`
                         }

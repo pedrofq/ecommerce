@@ -13,6 +13,8 @@ public class Carrinho implements Serializable {
     public static final String SEPARADOR_PRODUTO = "&";
     public static final String SEPARADOR_CAMPO = "@";
     
+    public static final String CHAVE = "pedro.carrinho";
+    
     //Método estático utilizado para obter um objeto do tipo Cookie a partir da requisição 
     //e do identificador cookie do carrinho de compras
     public static final Cookie obterCookie(HttpServletRequest request){
@@ -20,7 +22,7 @@ public class Carrinho implements Serializable {
         Cookie cookie = null;
         
         for(int i = 0; cookies != null && i < cookies.length; i++){
-            if(cookies[i].getName().equals("pedro.carrinho")){
+            if(cookies[i].getName().equals(CHAVE)){
                 cookie = cookies[i];
                 break;
             }
@@ -59,5 +61,28 @@ public class Carrinho implements Serializable {
         }
         return carrinhoCompraItens;
         
+    }
+    
+    public static final String adicionarItem(int produtoId, int quantidade, String valor) throws Exception{
+        List<CarrinhoCompraItem> carrinhoCompraItens = obterCarrinhoCompra(valor);
+        if(carrinhoCompraItens.isEmpty()){
+            return produtoId +SEPARADOR_CAMPO+ quantidade;
+        }
+        boolean adicionou = false;
+        String resultado = "";
+        for(CarrinhoCompraItem carrinhoCompraItem : carrinhoCompraItens){
+            if(carrinhoCompraItem.getProduto().getId() == produtoId){
+                carrinhoCompraItem.setQuantidade(carrinhoCompraItem.getQuantidade() + quantidade);
+                adicionou = true;
+            }
+            if(!resultado.isEmpty()){
+                resultado+=SEPARADOR_PRODUTO;
+            }
+            resultado += carrinhoCompraItem.getProduto().getId() + SEPARADOR_CAMPO + carrinhoCompraItem.getQuantidade();
+        }
+        if(!adicionou){
+            resultado += SEPARADOR_PRODUTO + produtoId + SEPARADOR_CAMPO + quantidade; 
+        }
+        return resultado;
     }
 }

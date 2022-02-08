@@ -42,7 +42,7 @@
         <div id="area-central">
             
             <span class="menu-vertical">         
-                <a href="#" target="iFramePrincipal"> Meu carrinho </a>
+                <a href="carrinho.jsp" target="iFramePrincipal"> Meu carrinho </a>
                 <a href="consulta.html" target="iFramePrincipal"> Categorias </a>
                 <a href="produtos" target="iFramePrincipal"> Todos os produtos </a>
                 <a href="PaginaTestes.jsp"> Alterar dados </a>
