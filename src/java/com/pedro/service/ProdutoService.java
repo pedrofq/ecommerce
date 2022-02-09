@@ -5,6 +5,7 @@ import com.pedro.ProdutoDTO;
 import com.pedro.domain.Categoria;
 import com.pedro.domain.Produto;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -152,6 +153,36 @@ public class ProdutoService {
         
         return prod;
     }
+    
+    
+    public Produto obter(int id) throws Exception {
+        Produto produto = null;
+        ConnectDB con = new ConnectDB();
+        Connection connection = con.conectar();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, descricao, quantidade, preco, foto FROM produto WHERE id = ?");
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            produto = new Produto();
+            produto.setId(resultSet.getInt("id"));
+            produto.setDescricao(resultSet.getString("descricao"));
+            produto.setQuantidade(resultSet.getInt("quantidade"));
+            produto.setPreco(resultSet.getDouble("preco"));
+            produto.setFoto(resultSet.getString("foto"));
+            if (resultSet.wasNull()) {
+                produto.setFoto(null);
+            }
+        }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
+        if (produto == null) {
+            throw new Exception("Produto nÃ£o encontrado");
+        }
+        return produto;
+    }
+    
+    
     
     public List<Produto> buscarTodosProdutos() throws SQLException{
         

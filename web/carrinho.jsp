@@ -4,17 +4,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-        Cookie[] cookies = request.getCookies();
-        Cookie cookie = cookies[0];
-        for(int i = 0; cookies != null && i < cookies.length; i++){
-            if(cookies[i].getName().equals(Carrinho.CHAVE)){
-                cookie = cookies[i];
-                break;
-            }
-        }
-        
-        List<CarrinhoCompraItem> carrinhoCompraItens = Carrinho.obterCarrinhoCompra(cookie.getValue());
-        System.out.println(carrinhoCompraItens);
+       List<CarrinhoCompraItem> carrinhoCompraItens = (List<CarrinhoCompraItem>) request.getAttribute("carrinhoCompraItens");
 %>
 
 <html>
@@ -31,13 +21,15 @@
     </head>
 
     <body class="container2">
-        TESTE
+        <h1>Carrinho</h1>
         
         <%
-            for(CarrinhoCompraItem item : carrinhoCompraItens){
+        for(CarrinhoCompraItem item : carrinhoCompraItens){
             
         %>
-        <%=item%>    
+            <%=item.getProduto().getDescricao()%>
+            <%=item.getProduto().getPreco()%>   
+            <%=item.getProduto().getQuantidade()%>   
         <%}%>
              
        

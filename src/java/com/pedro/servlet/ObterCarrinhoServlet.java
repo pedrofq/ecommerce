@@ -6,8 +6,12 @@
 package com.pedro.servlet;
 
 import com.pedro.domain.Carrinho;
+import static com.pedro.domain.Carrinho.CHAVE_COOKIE_CARRINHO_COMPRA;
 import com.pedro.domain.CarrinhoCompraItem;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,12 +27,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author pedro
  */
-@WebServlet(name = "carrinho", urlPatterns = {"/carrinho"})
-public class AdicionarCarrinhoCompraServlet extends HttpServlet {
-
+@WebServlet(name = "carrinho2", urlPatterns = {"/carrinho2"})
+public class ObterCarrinhoServlet extends HttpServlet {
+    
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+   
         
         Cookie[] cookies = request.getCookies();
         Cookie cookie = null;
@@ -38,29 +42,16 @@ public class AdicionarCarrinhoCompraServlet extends HttpServlet {
                 break;
             }
         }
-        if (cookie == null) {
-            cookie = new Cookie(Carrinho.CHAVE_COOKIE_CARRINHO_COMPRA, "");
-        }
-        cookie.setMaxAge(Integer.MAX_VALUE);
-        response.addCookie(cookie);
         
-       
-        int produtoId = Integer.parseInt(request.getParameter("produtoId"));
-        
- 
-        String novoValor;
-        
-        novoValor = Carrinho.adicionarItem(produtoId, 1, cookie.getValue());
-        
-        cookie.setValue(novoValor);
+
         /* saÃ­da */
         List<CarrinhoCompraItem> carrinhoCompraItens = Carrinho.obterCarrinhoCompra(cookie.getValue());
         System.out.println("Carrinho: "+carrinhoCompraItens);
         request.setAttribute("carrinhoCompraItens", carrinhoCompraItens);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("carrinho.jsp");
         requestDispatcher.forward(request, response);
+  
+         
     }
-
-}
        
-
+}
